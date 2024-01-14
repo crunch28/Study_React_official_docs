@@ -14,7 +14,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/na-yeon" element={<NMain />} />
-        <Route path="/min-gyeong" element={<MMain />} />
+        <Route path="/min-sung" element={<MMain />} />
         <Route path="/ju-hee" element={<JuMain />} />
         <Route path="/jong-han" element={<JoMain />} />
         <Route path="/ji-sang" element={<JiMain />} />
