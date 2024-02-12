@@ -1,29 +1,49 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Main from "./Main";
-import NMain from "./나연님/Index";
-import MSChallenges from "./민성님/Challenges";
-import MMain from "./민성님/Index";
-import JoMain from "./종한님/Index";
-import JuMain from "./주희님/Index";
-import JiMain from "./지상님/Index";
-import HMain from "./회진님/Index";
+import { Suspense, lazy } from "react";
+import ex20240207Router from './ex20240207Router';
+import ex20240214Router from './ex20240214Router';
 
-const Router = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/na-yeon" element={<NMain />} />
-        <Route path="/min-sung" element={<MMain />} />
-        <Route path="/min-sung/challenges" element={<MSChallenges />} />
-        <Route path="/ju-hee" element={<JuMain />} />
-        <Route path="/jong-han" element={<JoMain />} />
-        <Route path="/ji-sang" element={<JiMain />} />
-        <Route path="/hoe-jin" element={<HMain />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+const { createBrowserRouter } = require("react-router-dom");
+
+const Loading = <div>Loading...</div>;
+const Main = lazy(() => import("./Main/index.js"));
+const Ex20240117 = lazy(() => import("./ex/20240117/App.js"));
+const Ex20240124 = lazy(() => import("./ex/20240124/App.js"));
+const Ex20240207 = lazy(() => import("./ex/20240207/index.js"));
+const Ex20240214 = lazy(() => import("./ex/20240214/Index.js"));
+
+const Router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Suspense fallback={Loading}>
+      <Main />
+    </Suspense>,
+  },
+  {
+    path: "20240117",
+    element: <Suspense fallback={Loading}>
+      <Ex20240117 />
+    </Suspense>,
+  },
+  {
+    path: "20240124",
+    element: <Suspense fallback={Loading}>
+      <Ex20240124 />
+    </Suspense>,
+  },
+  {
+    path: "20240207",
+    element: <Suspense fallback={Loading}>
+      <Ex20240207 />
+    </Suspense>,
+    children: ex20240207Router()
+  },
+  {
+    path: "20240214",
+    element: <Suspense fallback={Loading}>
+      <Ex20240214 />
+    </Suspense>,
+    children: ex20240214Router()
+  }
+]);
 
 export default Router;
