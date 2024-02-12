@@ -1,6 +1,5 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function Main() {
-  const navigate = useNavigate();
   return (
     <div>
       <p><Link to={'/20240117'}><button>2024.01.17</button></Link></p>

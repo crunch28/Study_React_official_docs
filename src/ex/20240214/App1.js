@@ -50,11 +50,11 @@ export default function Gallery() {
                 </div>
                 <div id="ch2">
                     <h1>해결</h1>
-                    {sculptureList.length == index + 1 ? null
+                    {sculptureList.length === index + 1 ? null
                         : <button onClick={handleNextClick2}>
                             Next
                         </button>}
-                    {1 == index + 1 ? null
+                    {1 === index + 1 ? null
                         : <button onClick={handlePreviousClick2}>
                             Previous
                         </button>}
